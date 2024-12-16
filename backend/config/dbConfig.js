@@ -12,10 +12,9 @@ export const dbConnect = async () => {
 
     /*  Attempt to connect to the MongoDB database */
     const connect = await mongoose.connect(connectionString);
-    console.log(`
-      DB Environment - ${connect.connection.host}, 
-      DB Name - ${connect.connection.name}.
-    `);
+    console.log(
+      `=>  DB Environment - ${connect.connection.host}, DB Name - ${connect.connection.name}.`
+    );
   } catch (err) {
     /* Exit process if DB connection fails */
     console.log(`${databaseMsg.failedDb} ${err.message}`);
