@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { databaseMsg } from "../constant/index.js";
 
 export const dbConnect = async () => {
   try {
@@ -6,7 +7,7 @@ export const dbConnect = async () => {
 
     /* Ensure the connection string exists */
     if (!connectionString) {
-      throw new Error('MongoDB connection string is missing in environment variables');
+      throw new Error(databaseMsg.missedDBlink);
     }
 
     /*  Attempt to connect to the MongoDB database */
@@ -17,7 +18,7 @@ export const dbConnect = async () => {
     `);
   } catch (err) {
     /* Exit process if DB connection fails */
-    console.log(`DB connection failed: ${err.message}`);
+    console.log(`${databaseMsg.failedDb} ${err.message}`);
     process.exit(1);
   }
 };
