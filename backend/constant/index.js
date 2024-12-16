@@ -1,0 +1,1 @@
+export const serMsg = "Server running on port:";
