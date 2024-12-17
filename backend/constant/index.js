@@ -21,4 +21,8 @@ export const appMsg = {
   notUserAccess:
     "Access denied. you don't have permission to access the resource",
   invalidToken: "Invalid token, please login again",
+  validPackage: "Provided package already exist with active state.",
+  createdPackage: "Package created successfully",
+  notFoundPackage: "The package not found which you are looking for.",
+  invalidPackage: "Invalid isActive value, must be boolean true or false.",
 };

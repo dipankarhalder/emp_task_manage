@@ -11,9 +11,10 @@ export const getHealthCheck = async (req, res) => {
       })
       .end();
   } catch (error) {
-    return res.status(400).json({
-      status: 400,
+    return res.status(500).json({
+      status: 500,
       msg: appMsg.someWrong,
+      error: error.message,
     });
   }
 };
