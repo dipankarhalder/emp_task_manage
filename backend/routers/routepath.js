@@ -17,4 +17,5 @@ export const routes = {
   COMPANIES: "/v1/companies",
   FIND_COMPANY: "/v1/companies/:companyId",
   UPDATE_COMPANY: "/v1/company/:companyId",
+  DELETE_COMPANY: "/v1/company/:companyId",
 };
