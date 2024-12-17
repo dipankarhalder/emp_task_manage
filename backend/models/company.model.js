@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 
-const roles = ["BASIC", "STANDARD", "PRO"];
-
 const CompanySchema = new mongoose.Schema(
   {
     company: {
@@ -24,9 +22,9 @@ const CompanySchema = new mongoose.Schema(
       },
     },
     package: {
-      type: String,
-      enum: roles,
-      default: "BASIC",
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Package",
+      required: true,
     },
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,

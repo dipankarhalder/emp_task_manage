@@ -35,7 +35,7 @@ export const createNewPackage = async (req, res) => {
       return res.status(400).json({ status: 400, msg: appMsg.blankUserInfo });
     }
 
-    /* validate if the packahe name are already exist with active state */
+    /* validate if the package is already exist with active state */
     const existingPackage = await Package.findOne({ name });
     if (existingPackage) {
       return res.status(400).json({ status: 400, msg: appMsg.validPackage });
