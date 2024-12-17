@@ -1,7 +1,7 @@
-import { appMsg } from "../constant/index.js";
-import { User } from "../models/user.model.js";
-import { Package } from "../models/package.modal.js";
-import { Company } from "../models/company.model.js";
+import { appMsg } from "../../constant/index.js";
+import { User } from "../../models/admin/user.model.js";
+import { Package } from "../../models/admin/package.modal.js";
+import { Company } from "../../models/admin/company.model.js";
 
 /* get all the company info */
 export const getCompanyInfo = async (req, res) => {
@@ -51,6 +51,7 @@ export const getCompanyInfoById = async (req, res) => {
 /* create a new company */
 export const createNewCompany = async (req, res) => {
   try {
+    console.log("req--------------------", req.user._id);
     /* get company info from request body */
     const { name, email, contact, address } = req.body.company;
     const { packageId, createdBy } = req.body;
@@ -97,12 +98,12 @@ export const createNewCompany = async (req, res) => {
         contact,
         address,
       },
-      package: packageId,
-      createdBy,
+      package: existsPackage,
+      createdBy: existsUser,
     });
 
     /* save the company to the database */
-    await newCompany.save();
+    // await newCompany.save();
 
     /* populate user and package field */
     const populatedCompany = await Company.findById(newCompany._id)
