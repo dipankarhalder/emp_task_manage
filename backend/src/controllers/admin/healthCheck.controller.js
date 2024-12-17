@@ -1,4 +1,4 @@
-import { appMsg } from "../constant/index.js";
+import { appMsg } from "../../constant/index.js";
 
 /* check the server working as expected or not */
 export const getHealthCheck = async (req, res) => {
