@@ -16,6 +16,7 @@ export const appMsg = {
   phoneValid: "Provided phone no. is already associated with another user.",
   newUserCreated: "New user created successfully.",
   existEmail: "Email address is not exist!",
+  existUser: "The user is not exist, which you are looking for.",
   wrongPassword: "Entered password is invalide, please try again.",
   accessDenied: "Access denied. No token provided.",
   notUserAccess:
@@ -23,6 +24,10 @@ export const appMsg = {
   invalidToken: "Invalid token, please login again",
   validPackage: "Provided package already exist with active state.",
   createdPackage: "Package created successfully",
-  notFoundPackage: "The package not found which you are looking for.",
+  notFoundPackage: "The package is not found which you are looking for.",
   invalidPackage: "Invalid isActive value, must be boolean true or false.",
+  existsCompany: "The company already exist, which you are looking for.",
+  companyCreated: "The company created successfully",
+  companyNotFound: "The company is not found which you are looking for.",
+  companyUpdated: "The company info updated successfully",
 };
