@@ -1,4 +1,4 @@
-import { getHealthCheck } from "../controllers/healthCheck.controller.js";
+import { getHealthCheck } from "../../controllers/admin/healthCheck.controller.js";
 import { routes } from "./routepath.js";
 
 export default (router) => {

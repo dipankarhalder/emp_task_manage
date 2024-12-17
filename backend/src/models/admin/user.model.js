@@ -4,40 +4,16 @@ import jwt from "jsonwebtoken";
 
 const saltNum = 10;
 const tokenExp = "1h";
-const roles = ["SUPERADMIN", "ADMIN"];
+const roles = ["SUPERADMIN", "INT_ADMIN"];
 
 const UserSchema = new mongoose.Schema(
   {
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-    },
-    password: {
-      type: String,
-      required: true,
-      minlength: 6,
-    },
-    role: {
-      type: String,
-      enum: roles,
-      default: "ADMIN",
-    },
-    firstname: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastname: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    phone: {
-      type: String,
-      required: true,
-    },
+    email: { type: String, required: true, unique: true, trim: true, },
+    password: { type: String, required: true, minlength: 6, },
+    role: { type: String, enum: roles, default: "SUPERADMIN", },
+    firstname: { type: String, required: true, trim: true, },
+    lastname: { type: String, required: true, trim: true, },
+    phone: { type: String, required: true, },
   },
   { timestamps: true }
 );
@@ -72,9 +48,7 @@ UserSchema.methods.generateAuthToken = function () {
   };
 
   /* Create token with a secret key and an expiration time (e.g., 1 hour) */
-  const token = jwt.sign(payload, process.env.APP_JWT_SEC, {
-    expiresIn: tokenExp,
-  });
+  const token = jwt.sign(payload, process.env.APP_JWT_SEC, { expiresIn: tokenExp, });
   return token;
 };
 

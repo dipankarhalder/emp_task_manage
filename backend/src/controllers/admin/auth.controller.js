@@ -1,8 +1,8 @@
-import { appMsg } from "../constant/index.js";
-import { User } from "../models/user.model.js";
+import { appMsg } from "../../constant/index.js";
+import { User } from "../../models/admin/user.model.js";
 
 /* user registration */
-export const userRegistration = async (req, res) => {
+export const adminRegistration = async (req, res) => {
   try {
     /* get user info from request body */
     const { email, password, firstname, lastname, phone, role } = req.body;
@@ -24,36 +24,17 @@ export const userRegistration = async (req, res) => {
       return res.status(400).json({ status: 400, msg: appMsg.phoneValid });
     }
 
-    const user = new User({
-      email,
-      password,
-      firstname,
-      lastname,
-      phone,
-      role,
-    });
-
     /* save the user to the database */
+    const user = new User({ email, password, firstname, lastname, phone, role, });
     await user.save();
-
-    return res
-      .status(200)
-      .json({
-        status: 200,
-        msg: appMsg.newUserCreated,
-      })
-      .end();
+    return res.status(200).json({ status: 200, msg: appMsg.newUserCreated }).end();
   } catch (error) {
-    return res.status(500).json({
-      status: 500,
-      msg: appMsg.someWrong,
-      error: error.message,
-    });
+    return res.status(500).json({ status: 500, msg: appMsg.someWrong, error: error.message });
   }
 };
 
 /* user login */
-export const userLogin = async (req, res) => {
+export const adminLogin = async (req, res) => {
   try {
     /* get user info from request body */
     const { email, password } = req.body;
@@ -77,19 +58,8 @@ export const userLogin = async (req, res) => {
 
     /* Generate JWT after successful login */
     const token = user.generateAuthToken();
-    return res
-      .status(200)
-      .json({
-        status: 200,
-        token: token,
-        msg: appMsg.newUserCreated,
-      })
-      .end();
+    return res.status(200).json({ status: 200, token: token, msg: appMsg.newUserCreated }).end();
   } catch (error) {
-    return res.status(500).json({
-      status: 500,
-      msg: appMsg.someWrong,
-      error: error.message,
-    });
+    return res.status(500).json({ status: 500, msg: appMsg.someWrong, error: error.message });
   }
 };
