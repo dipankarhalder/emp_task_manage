@@ -184,3 +184,33 @@ export const updateCompanyInfo = async (req, res) => {
     });
   }
 };
+
+/* delete the company by ID */
+export const deleteCompany = async (req, res) => {
+  try {
+    const companyId = req.params.companyId;
+
+    /* Check if company exists */
+    const company = await Company.findById(companyId);
+    if (!company) {
+      return res.status(404).json({
+        status: 404,
+        msg: appMsg.companyNotFound,
+      });
+    }
+
+    /* Delete the company */
+    await Company.findByIdAndDelete(companyId);
+
+    return res.status(200).json({
+      status: 200,
+      msg: appMsg.companyDeleted,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      status: 500,
+      msg: appMsg.someWrong,
+      error: error.message,
+    });
+  }
+};

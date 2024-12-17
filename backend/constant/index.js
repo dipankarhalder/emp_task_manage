@@ -30,4 +30,5 @@ export const appMsg = {
   companyCreated: "The company created successfully",
   companyNotFound: "The company is not found which you are looking for.",
   companyUpdated: "The company info updated successfully",
+  companyDeleted: "The company info deleted successfully",
 };
