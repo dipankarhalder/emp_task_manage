@@ -2,6 +2,7 @@ import express from "express";
 
 import healthCheck from "./healthCheck.route.js";
 import authentication from "./auth.route.js";
+import packages from "./package.route.js";
 
 /* router with default export */
 const router = express.Router();
@@ -9,6 +10,7 @@ const router = express.Router();
 export default () => {
   healthCheck(router);
   authentication(router);
+  packages(router);
 
   return router;
 };
