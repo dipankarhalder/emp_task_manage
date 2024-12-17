@@ -17,4 +17,8 @@ export const appMsg = {
   newUserCreated: "New user created successfully.",
   existEmail: "Email address is not exist!",
   wrongPassword: "Entered password is invalide, please try again.",
+  accessDenied: "Access denied. No token provided.",
+  notUserAccess:
+    "Access denied. you don't have permission to access the resource",
+  invalidToken: "Invalid token, please login again",
 };
