@@ -19,14 +19,15 @@ export const appMsg = {
   existUser: "The user is not exist, which you are looking for.",
   wrongPassword: "Entered password is invalide, please try again.",
   accessDenied: "Access denied. No token provided.",
-  notUserAccess: "Access denied. you don't have permission to access the resource",
+  notUserAccess:
+    "Access denied. you don't have permission to access the resource",
   invalidToken: "Invalid token, please login again",
 
   validPackage: "Provided package already exist with active state.",
   createdPackage: "Package created successfully",
   notFoundPackage: "The package is not found which you are looking for.",
   invalidPackage: "Invalid isActive value, must be boolean true or false.",
-  
+
   existsCompany: "The company already exist, which you are looking for.",
   companyCreated: "The company created successfully",
   companyNotFound: "The company is not found which you are looking for.",

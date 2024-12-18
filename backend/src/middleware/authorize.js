@@ -7,7 +7,10 @@ export function authorizeRole(roles) {
     /* validate the token */
     const token = req.header("Authorization")?.replace("Bearer ", "");
     if (!token) {
-      return res.status(401).json({ status: 401, msg: appMsg.accessDenied });
+      return res.status(401).json({
+        status: 401,
+        msg: appMsg.accessDenied,
+      });
     }
 
     try {
@@ -16,12 +19,18 @@ export function authorizeRole(roles) {
       req.user = decoded;
 
       if (!roles.includes(req.user.role)) {
-        return res.status(403).json({ status: 403, msg: appMsg.notUserAccess });
+        return res.status(403).json({
+          status: 403,
+          msg: appMsg.notUserAccess,
+        });
       }
 
       next();
     } catch (error) {
-      return res.status(400).json({ status: 400, msg: appMsg.invalidToken });
+      return res.status(400).json({
+        status: 400,
+        msg: appMsg.invalidToken,
+      });
     }
   };
 }

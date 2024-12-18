@@ -51,14 +51,16 @@ export const getCompanyInfoById = async (req, res) => {
 /* create a new company */
 export const createNewCompany = async (req, res) => {
   try {
-    console.log("req--------------------", req.user._id);
     /* get company info from request body */
     const { name, email, contact, address } = req.body.company;
     const { packageId, createdBy } = req.body;
 
     /* validate all fields empty or not */
     if (!name || !email || !contact || !address || !packageId || !createdBy) {
-      return res.status(400).json({ status: 400, msg: appMsg.blankUserInfo });
+      return res.status(400).json({
+        status: 400,
+        msg: appMsg.blankUserInfo,
+      });
     }
 
     /* validate the company already exists or not */
@@ -103,7 +105,7 @@ export const createNewCompany = async (req, res) => {
     });
 
     /* save the company to the database */
-    // await newCompany.save();
+    await newCompany.save();
 
     /* populate user and package field */
     const populatedCompany = await Company.findById(newCompany._id)
